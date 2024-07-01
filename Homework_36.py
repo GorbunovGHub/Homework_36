@@ -8,9 +8,8 @@ class BankAccount(Thread):
     state_2: object
     state_1: object
 
-    def __init__(self, check, balance, *args, **kwargs):
+    def __init__(self, balance, *args, **kwargs):
         super(BankAccount, self).__init__(*args, **kwargs)
-        self.check = check
         self.balance = balance
 
     def withdraw(self, state_1):
@@ -37,7 +36,7 @@ def withdraw_task(account, amount):
         # account = BankAccount()
 
 
-account = BankAccount('30101810907020000615', 1000)
+account = BankAccount(1000)
 
 deposit_thread = threading.Thread(target=deposit_task, args=(account, 100))
 withdraw_thread = threading.Thread(target=withdraw_task, args=(account, 150))
